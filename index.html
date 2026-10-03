@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Admin - SIAKAD Sekolah</title>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="login-body">
+  <!-- Ambient Glassmorphic Orbs -->
+  <div class="bg-glow-orb orb-1"></div>
+  <div class="bg-glow-orb orb-2"></div>
+  <div class="bg-glow-orb orb-3"></div>
+
+  <!-- Login Card Container -->
+  <div class="login-card">
+    <div class="login-header">
+      <div class="login-logo">
+        <i class="fa-solid fa-graduation-cap"></i>
+      </div>
+      <h2>SIAKAD SMK</h2>
+      <p>Portal Manajemen Akademik Terpadu (Client-Side)</p>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" novalidate>
+      <div class="form-group">
+        <label class="form-label" for="loginUsername">
+          Nama Pengguna / NIP
+        </label>
+        <div style="position: relative;">
+          <i class="fa-solid fa-user" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+          <input 
+            type="text" 
+            id="loginUsername" 
+            class="form-control" 
+            placeholder="Masukkan username atau NIP..." 
+            style="padding-left: 44px;"
+            value="admin"
+            required
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <label class="form-label" for="loginPassword">Kata Sandi</label>
+          <a href="#" onclick="alert('Untuk demo akun, silakan gunakan kredensial default: admin / password123'); return false;" style="font-size: 11.5px; color: var(--accent-cyan); text-decoration: none;">
+            Lupa Sandi?
+          </a>
+        </div>
+        <div style="position: relative;">
+          <i class="fa-solid fa-lock" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+          <input 
+            type="password" 
+            id="loginPassword" 
+            class="form-control" 
+            placeholder="Masukkan kata sandi..." 
+            style="padding-left: 44px; padding-right: 44px;"
+            value="password123"
+            required
+          >
+          <button type="button" id="togglePasswordBtn" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-muted); cursor: pointer;">
+            <i class="fa-solid fa-eye" id="eyeIcon"></i>
+          </button>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: space-between; margin: 18px 0 24px;">
+        <label style="display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--text-secondary); cursor: pointer;">
+          <input type="checkbox" id="rememberMe" checked style="accent-color: var(--accent-cyan);">
+          Ingat Saya di Peramban Ini
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; font-size: 15px;">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i> Masuk ke Dashboard
+      </button>
+    </form>
+
+    <!-- Demo Credentials Helper Card -->
+    <div style="margin-top: 24px; padding: 14px 16px; background: rgba(76, 201, 240, 0.08); border: 1px solid rgba(76, 201, 240, 0.2); border-radius: 8px; font-size: 12px; color: var(--text-secondary);">
+      <div style="font-weight: 700; color: var(--accent-cyan); margin-bottom: 4px;">
+        <i class="fa-solid fa-circle-info"></i> Akun Demo Penguji / Dosen:
+      </div>
+      <div>Username: <strong style="color: #fff;">admin</strong></div>
+      <div>Password: <strong style="color: #fff;">password123</strong></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const loginForm = document.getElementById("loginForm");
+      const togglePasswordBtn = document.getElementById("togglePasswordBtn");
+      const passwordInput = document.getElementById("loginPassword");
+      const eyeIcon = document.getElementById("eyeIcon");
+
+      // Show/Hide Password
+      if (togglePasswordBtn && passwordInput) {
+        togglePasswordBtn.addEventListener("click", () => {
+          if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+          } else {
+            passwordInput.type = "password";
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+          }
+        });
+      }
+
+      // Handle Submit Login
+      if (loginForm) {
+        loginForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const username = document.getElementById("loginUsername").value.trim();
+          const password = passwordInput.value;
+
+          if (username === "" || password === "") {
+            showToast("Harap isi username dan password!", "warning");
+            return;
+          }
+
+          // Validasi Kredensial Mock
+          if (username === "admin" && password === "password123") {
+            showToast("Autentikasi berhasil! Mengalihkan ke dashboard...", "success");
+            setTimeout(() => {
+              window.location.href = "pages/dashboard.html";
+            }, 800);
+          } else {
+            showToast("Username atau kata sandi tidak valid!", "danger");
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

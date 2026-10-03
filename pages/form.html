@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tambah Siswa Baru - SIAKAD Admin Panel</title>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <!-- Ambient Background Orbs -->
+  <div class="bg-glow-orb orb-1"></div>
+  <div class="bg-glow-orb orb-2"></div>
+  <div class="bg-glow-orb orb-3"></div>
+
+  <div class="app-layout">
+    <!-- =====================================================================
+         SIDEBAR NAVIGATION
+         ===================================================================== -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div class="brand-text">
+          <h2>SIAKAD SMK</h2>
+          <span>Admin Portal</span>
+        </div>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="menu-category">Menu Utama</li>
+        <li class="nav-item">
+          <a href="dashboard.html" class="nav-link">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+
+        <li class="menu-category">Master Data</li>
+        <li class="nav-item">
+          <a href="data-master.html" class="nav-link">
+            <i class="fa-solid fa-user-graduate"></i>
+            <span>Data Siswa</span>
+            <span class="badge-nav">Master</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="form.html" class="nav-link active">
+            <i class="fa-solid fa-user-plus"></i>
+            <span>Tambah Siswa</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" onclick="showToast('Modul Data Guru akan hadir pada rilis berikutnya', 'warning'); return false;">
+            <i class="fa-solid fa-chalkboard-user"></i>
+            <span>Data Guru</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" onclick="showToast('Modul Data Kelas akan hadir pada rilis berikutnya', 'warning'); return false;">
+            <i class="fa-solid fa-school"></i>
+            <span>Data Kelas</span>
+          </a>
+        </li>
+
+        <li class="menu-category">Akademik & Penilaian</li>
+        <li class="nav-item">
+          <a href="laporan.html" class="nav-link">
+            <i class="fa-solid fa-file-invoice"></i>
+            <span>Laporan & Rapor</span>
+          </a>
+        </li>
+
+        <li class="menu-category">Sistem</li>
+        <li class="nav-item">
+          <a href="../index.html" class="nav-link" id="btnLogout">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Keluar Sistem</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-card">
+          <div class="user-avatar">AD</div>
+          <div class="user-info">
+            <div class="user-name">Administrator</div>
+            <div class="user-role">Super Admin</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- =====================================================================
+         MAIN WRAPPER
+         ===================================================================== -->
+    <div class="main-wrapper">
+      <!-- Top Navigation Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="btn-sidebar-toggle" id="sidebarToggleBtn" title="Buka/Tutup Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="academic-badge">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>T.A 2026/2027 • Semester Ganjil</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="header-actions">
+            <a href="data-master.html" class="btn btn-secondary btn-sm">
+              <i class="fa-solid fa-arrow-left"></i> Kembali ke Tabel
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="content-area">
+        <div class="page-header">
+          <div class="page-title">
+            <h1>Formulir Registrasi Siswa Baru</h1>
+            <p>Masukkan data identitas pokok siswa secara akurat sesuai berkas PPDB.</p>
+          </div>
+        </div>
+
+        <div class="glass-card" style="max-width: 860px; margin: 0 auto;">
+          <div class="card-header-clean">
+            <div class="card-title-wrap">
+              <h3>Informasi Pokok Siswa</h3>
+              <span>Seluruh bidang bertanda (*) wajib diisi lengkap.</span>
+            </div>
+            <span class="badge badge-cyan"><i class="fa-solid fa-shield-halved"></i> Validasi Real-Time</span>
+          </div>
+
+          <!-- Form Input Siswa -->
+          <form id="addStudentForm" novalidate>
+            <div class="form-grid">
+              <!-- Kolom NISN -->
+              <div class="form-group">
+                <label class="form-label" for="inputNisn">
+                  NISN (Nomor Induk Siswa Nasional) <span class="required">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="inputNisn" 
+                  class="form-control" 
+                  placeholder="Contoh: 0051234509" 
+                  maxlength="10"
+                  required
+                >
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <!-- Kolom Nama Lengkap -->
+              <div class="form-group">
+                <label class="form-label" for="inputNama">
+                  Nama Lengkap Siswa <span class="required">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="inputNama" 
+                  class="form-control" 
+                  placeholder="Masukkan nama lengkap siswa..." 
+                  required
+                >
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <!-- Kolom Jenis Kelamin -->
+              <div class="form-group">
+                <label class="form-label" for="inputGender">
+                  Jenis Kelamin <span class="required">*</span>
+                </label>
+                <select id="inputGender" class="form-control" required>
+                  <option value="L">Laki-laki (L)</option>
+                  <option value="P">Perempuan (P)</option>
+                </select>
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <!-- Kolom Rombel / Kelas -->
+              <div class="form-group">
+                <label class="form-label" for="inputKelas">
+                  Kelas / Rombel <span class="required">*</span>
+                </label>
+                <select id="inputKelas" class="form-control" required>
+                  <option value="">-- Pilih Kelas --</option>
+                  <option value="X RPL 1">X RPL 1</option>
+                  <option value="X TKJ 1">X TKJ 1</option>
+                  <option value="X MM 1">X MM 1</option>
+                  <option value="XI RPL 1">XI RPL 1</option>
+                  <option value="XI TKJ 2">XI TKJ 2</option>
+                  <option value="XII RPL 1">XII RPL 1</option>
+                </select>
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <!-- Kolom Jurusan -->
+              <div class="form-group">
+                <label class="form-label" for="inputJurusan">
+                  Program Keahlian / Jurusan <span class="required">*</span>
+                </label>
+                <select id="inputJurusan" class="form-control" required>
+                  <option value="">-- Pilih Program Keahlian --</option>
+                  <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak (RPL)</option>
+                  <option value="Teknik Komputer & Jaringan">Teknik Komputer & Jaringan (TKJ)</option>
+                  <option value="Multimedia / DKV">Multimedia / DKV</option>
+                </select>
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <!-- Kolom No Telepon / WA -->
+              <div class="form-group">
+                <label class="form-label" for="inputNoHp">
+                  Nomor HP / WhatsApp Wali <span class="required">*</span>
+                </label>
+                <input 
+                  type="tel" 
+                  id="inputNoHp" 
+                  class="form-control" 
+                  placeholder="Contoh: 081234567890" 
+                  required
+                >
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <!-- Kolom Status Siswa -->
+              <div class="form-group full-width">
+                <label class="form-label" for="inputStatus">
+                  Status Akademik
+                </label>
+                <select id="inputStatus" class="form-control">
+                  <option value="Aktif">Aktif</option>
+                  <option value="Nonaktif">Nonaktif</option>
+                </select>
+              </div>
+
+              <!-- Kolom Alamat Lengkap -->
+              <div class="form-group full-width">
+                <label class="form-label" for="inputAlamat">
+                  Alamat Tempat Tinggal <span class="required">*</span>
+                </label>
+                <textarea 
+                  id="inputAlamat" 
+                  class="form-control" 
+                  placeholder="Masukkan alamat domisili lengkap siswa..." 
+                  rows="3"
+                  required
+                ></textarea>
+                <div class="invalid-feedback"></div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div style="display: flex; justify-content: flex-end; gap: 14px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.08);">
+              <a href="data-master.html" class="btn btn-secondary">
+                <i class="fa-solid fa-xmark"></i> Batalkan
+              </a>
+              <button type="submit" class="btn btn-primary" id="btnSubmitStudent">
+                <i class="fa-solid fa-floppy-disk"></i> Simpan Data Siswa
+              </button>
+            </div>
+          </form>
+        </div>
+      </main>
+
+      <!-- Main Footer -->
+      <footer class="main-footer">
+        <div>&copy; 2026 <strong>SIAKAD SMK Unggul</strong> - Sistem Informasi Akademik Sekolah.</div>
+        <div>Mata Kuliah: Pemrograman Web 2 (Client-Side Programming)</div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/form-validation.js"></script>
+</body>
+</html>
