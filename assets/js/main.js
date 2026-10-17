@@ -345,7 +345,8 @@ function setupMobileDrawer() {
   if (!backdrop) {
     backdrop = document.createElement("div");
     backdrop.className = "sidebar-backdrop";
-    document.body.appendChild(backdrop);
+    const container = document.querySelector(".app-layout") || document.body;
+    container.appendChild(backdrop);
   }
 
   // Tambahkan tombol close (X) di dalam sidebar khusus mobile jika belum ada
@@ -394,12 +395,14 @@ function setupMobileDrawer() {
     closeSidebar();
   });
 
-  // Tutup sidebar jika salah satu link navigasi diklik di mobile
+  // Tutup sidebar jika salah satu link navigasi diklik di mobile setelah navigasi berjalan
   const navLinks = sidebar.querySelectorAll(".nav-link");
   navLinks.forEach((link) => {
     link.addEventListener("click", () => {
       if (window.innerWidth <= 992) {
-        closeSidebar();
+        setTimeout(() => {
+          closeSidebar();
+        }, 150);
       }
     });
   });

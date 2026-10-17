@@ -70,7 +70,7 @@ body {
   border-radius: 50%;
   filter: blur(80px);
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
   opacity: 0.35;
   animation: floatOrb 12s ease-in-out infinite alternate;
 }
@@ -109,7 +109,6 @@ body {
 /* Common Layout Wrapper */
 .app-layout {
   position: relative;
-  z-index: 1;
   display: flex;
   min-height: 100vh;
 }
@@ -129,7 +128,7 @@ body {
   top: 0;
   bottom: 0;
   left: 0;
-  z-index: 100;
+  z-index: 1050;
   transition: transform var(--transition-speed);
 }
 
@@ -1189,13 +1188,13 @@ textarea.form-control {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(4, 7, 18, 0.7);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  z-index: 98;
+  z-index: 990;
   opacity: 0;
   visibility: hidden;
-  pointer-events: none !important;
+  pointer-events: none;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
@@ -1217,8 +1216,8 @@ body.sidebar-open-locked {
 
 .sidebar-mobile-close {
   display: none;
-  background: rgba(239, 71, 111, 0.15);
-  border: 1px solid rgba(239, 71, 111, 0.4);
+  background: rgba(239, 71, 111, 0.18);
+  border: 1px solid rgba(239, 71, 111, 0.45);
   color: var(--accent-danger);
   width: 36px;
   height: 36px;
@@ -1268,25 +1267,42 @@ body.sidebar-open-locked {
    RESPONSIVE BREAKPOINTS (TABLET & MOBILE)
    ========================================================================== */
 @media (max-width: 992px) {
+  .app-layout {
+    z-index: auto !important;
+  }
+
   .top-header {
-    z-index: 95;
+    z-index: 900;
   }
 
   .sidebar {
     transform: translateX(-100%);
-    box-shadow: 15px 0 40px rgba(0, 0, 0, 0.85);
-    z-index: 110;
-    background: #111a30 !important;
-    width: 280px;
+    box-shadow: 20px 0 50px rgba(0, 0, 0, 0.95);
+    z-index: 1050 !important;
+    background: #0d1527 !important;
+    width: 285px;
     max-width: 85vw;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .sidebar.mobile-active {
-    transform: translateX(0);
+    transform: translateX(0) !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+
+  .sidebar-menu,
+  .sidebar-menu .nav-link {
+    position: relative;
+    z-index: 1060 !important;
+    pointer-events: auto !important;
+    cursor: pointer;
   }
 
   .sidebar-mobile-close {
     display: flex;
+    z-index: 1065 !important;
+    pointer-events: auto !important;
   }
 
   .main-wrapper {
