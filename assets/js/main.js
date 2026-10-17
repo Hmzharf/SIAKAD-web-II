@@ -353,9 +353,15 @@ function setupMobileDrawer() {
   if (sidebarBrand && !sidebar.querySelector(".sidebar-mobile-close")) {
     const closeBtn = document.createElement("button");
     closeBtn.className = "sidebar-mobile-close";
+    closeBtn.setAttribute("type", "button");
+    closeBtn.setAttribute("aria-label", "Tutup Menu Navigasi");
     closeBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
     closeBtn.setAttribute("title", "Tutup Menu");
-    closeBtn.addEventListener("click", closeSidebar);
+    closeBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeSidebar();
+    });
     sidebarBrand.appendChild(closeBtn);
   }
 
@@ -373,6 +379,7 @@ function setupMobileDrawer() {
 
   if (sidebarToggleBtn) {
     sidebarToggleBtn.addEventListener("click", (e) => {
+      e.preventDefault();
       e.stopPropagation();
       if (sidebar.classList.contains("mobile-active")) {
         closeSidebar();
@@ -382,7 +389,10 @@ function setupMobileDrawer() {
     });
   }
 
-  backdrop.addEventListener("click", closeSidebar);
+  backdrop.addEventListener("click", (e) => {
+    e.preventDefault();
+    closeSidebar();
+  });
 
   // Tutup sidebar jika salah satu link navigasi diklik di mobile
   const navLinks = sidebar.querySelectorAll(".nav-link");
