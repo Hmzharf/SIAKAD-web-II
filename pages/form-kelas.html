@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tambah Rombel Kelas Baru - SIAKAD Admin Panel</title>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <!-- Ambient Background Orbs -->
+  <div class="bg-glow-orb orb-1"></div>
+  <div class="bg-glow-orb orb-2"></div>
+  <div class="bg-glow-orb orb-3"></div>
+
+  <div class="app-layout">
+    <!-- =====================================================================
+         SIDEBAR NAVIGATION
+         ===================================================================== -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div class="brand-text">
+          <h2>SIAKAD SMK</h2>
+          <span>Admin Portal</span>
+        </div>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="menu-category">Menu Utama</li>
+        <li class="nav-item">
+          <a href="dashboard.html" class="nav-link">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+
+        <li class="menu-category">Master Data</li>
+        <li class="nav-item">
+          <a href="data-master.html" class="nav-link">
+            <i class="fa-solid fa-user-graduate"></i>
+            <span>Data Siswa</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="form.html" class="nav-link">
+            <i class="fa-solid fa-user-plus"></i>
+            <span>Tambah Siswa</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="data-guru.html" class="nav-link">
+            <i class="fa-solid fa-chalkboard-user"></i>
+            <span>Data Guru</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="form-guru.html" class="nav-link">
+            <i class="fa-solid fa-user-tie"></i>
+            <span>Tambah Guru</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="data-kelas.html" class="nav-link">
+            <i class="fa-solid fa-school"></i>
+            <span>Data Kelas</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="form-kelas.html" class="nav-link active">
+            <i class="fa-solid fa-folder-plus"></i>
+            <span>Tambah Kelas</span>
+          </a>
+        </li>
+
+        <li class="menu-category">Akademik & Penilaian</li>
+        <li class="nav-item">
+          <a href="laporan.html" class="nav-link">
+            <i class="fa-solid fa-file-invoice"></i>
+            <span>Laporan & Rapor</span>
+          </a>
+        </li>
+
+        <li class="menu-category">Sistem</li>
+        <li class="nav-item">
+          <a href="../index.html" class="nav-link" id="btnLogout">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Keluar Sistem</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-card">
+          <div class="user-avatar">AD</div>
+          <div class="user-info">
+            <div class="user-name">Administrator</div>
+            <div class="user-role">Super Admin</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- =====================================================================
+         MAIN WRAPPER
+         ===================================================================== -->
+    <div class="main-wrapper">
+      <!-- Top Navigation Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="btn-sidebar-toggle" id="sidebarToggleBtn" title="Buka/Tutup Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="academic-badge">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>T.A 2026/2027 • Semester Ganjil</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="header-actions">
+            <a href="data-kelas.html" class="btn btn-secondary btn-sm">
+              <i class="fa-solid fa-arrow-left"></i> Kembali ke Daftar Kelas
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="content-area">
+        <div class="page-header">
+          <div class="page-title">
+            <h1>Formulir Tambah Rombongan Belajar (Kelas)</h1>
+            <p>Konfigurasi kelas baru, tingkat angkatan, program keahlian, dan guru wali kelas.</p>
+          </div>
+        </div>
+
+        <div class="glass-card" style="max-width: 860px; margin: 0 auto;">
+          <div class="card-header-clean">
+            <div class="card-title-wrap">
+              <h3>Spesifikasi Rombel & Ruangan</h3>
+              <span>Kolom dengan tanda (*) wajib diisi lengkap.</span>
+            </div>
+            <span class="badge badge-cyan"><i class="fa-solid fa-shield-halved"></i> Validasi Client-Side</span>
+          </div>
+
+          <!-- Form Tambah Kelas -->
+          <form id="addNewClassPageForm" novalidate>
+            <div class="form-grid">
+              <!-- Kolom Nama Kelas -->
+              <div class="form-group">
+                <label class="form-label" for="formClassNama">
+                  Nama Rombel / Kelas <span class="required">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="formClassNama" 
+                  class="form-control" 
+                  placeholder="Contoh: XII RPL 1 atau X TKJ 2" 
+                  required
+                >
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <!-- Kolom Tingkat -->
+              <div class="form-group">
+                <label class="form-label" for="formClassTingkat">
+                  Tingkat Pendidikan <span class="required">*</span>
+                </label>
+                <select id="formClassTingkat" class="form-control" required>
+                  <option value="X">Kelas X (Sepuluh)</option>
+                  <option value="XI">Kelas XI (Sebelas)</option>
+                  <option value="XII">Kelas XII (Duabelas)</option>
+                </select>
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <!-- Kolom Jurusan -->
+              <div class="form-group">
+                <label class="form-label" for="formClassJurusan">
+                  Program Keahlian / Jurusan <span class="required">*</span>
+                </label>
+                <select id="formClassJurusan" class="form-control" required>
+                  <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak (RPL)</option>
+                  <option value="Teknik Komputer & Jaringan">Teknik Komputer & Jaringan (TKJ)</option>
+                  <option value="Multimedia / DKV">Multimedia / DKV</option>
+                </select>
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <!-- Kolom Ruangan -->
+              <div class="form-group">
+                <label class="form-label" for="formClassRuangan">
+                  Ruang Kelas / Lab <span class="required">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="formClassRuangan" 
+                  class="form-control" 
+                  placeholder="Contoh: Lab RPL 1 (Gd. B Lt. 2)" 
+                  required
+                >
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <!-- Kolom Kapasitas -->
+              <div class="form-group">
+                <label class="form-label" for="formClassKapasitas">
+                  Kapasitas Maksimal Siswa <span class="required">*</span>
+                </label>
+                <input 
+                  type="number" 
+                  id="formClassKapasitas" 
+                  class="form-control" 
+                  value="36" 
+                  min="10" 
+                  max="45" 
+                  required
+                >
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <!-- Kolom Siswa Terdaftar -->
+              <div class="form-group">
+                <label class="form-label" for="formClassJumlahSiswa">
+                  Jumlah Siswa Terdaftar
+                </label>
+                <input 
+                  type="number" 
+                  id="formClassJumlahSiswa" 
+                  class="form-control" 
+                  value="35" 
+                  min="0" 
+                  max="45"
+                >
+                <div class="invalid-feedback"></div>
+              </div>
+
+              <!-- Kolom Wali Kelas -->
+              <div class="form-group full-width">
+                <label class="form-label" for="formClassWali">
+                  Nama Guru Wali Kelas <span class="required">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="formClassWali" 
+                  class="form-control" 
+                  placeholder="Contoh: Drs. Bambang Sudarsono, M.Kom" 
+                  required
+                >
+                <div class="invalid-feedback"></div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div style="display: flex; justify-content: flex-end; gap: 14px; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.08);">
+              <a href="data-kelas.html" class="btn btn-secondary">
+                <i class="fa-solid fa-xmark"></i> Batalkan
+              </a>
+              <button type="submit" class="btn btn-primary" id="btnSubmitClass">
+                <i class="fa-solid fa-floppy-disk"></i> Simpan Data Kelas
+              </button>
+            </div>
+          </form>
+        </div>
+      </main>
+
+      <!-- Main Footer -->
+      <footer class="main-footer">
+        <div>&copy; 2026 <strong>SIAKAD SMK Unggul</strong> - Sistem Informasi Akademik Sekolah.</div>
+        <div>Mata Kuliah: Pemrograman Web 2 (Client-Side Programming)</div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../assets/js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("addNewClassPageForm");
+      if (!form) return;
+
+      const namaInput = document.getElementById("formClassNama");
+      const tingkatInput = document.getElementById("formClassTingkat");
+      const jurusanInput = document.getElementById("formClassJurusan");
+      const ruanganInput = document.getElementById("formClassRuangan");
+      const kapasitasInput = document.getElementById("formClassKapasitas");
+      const jumlahSiswaInput = document.getElementById("formClassJumlahSiswa");
+      const waliInput = document.getElementById("formClassWali");
+
+      function setErr(input, msg) {
+        input.classList.remove("is-valid");
+        input.classList.add("is-invalid");
+        const fb = input.parentElement.querySelector(".invalid-feedback");
+        if (fb) fb.textContent = msg;
+      }
+
+      function setOk(input) {
+        input.classList.remove("is-invalid");
+        input.classList.add("is-valid");
+        const fb = input.parentElement.querySelector(".invalid-feedback");
+        if (fb) fb.textContent = "";
+      }
+
+      namaInput.addEventListener("input", () => {
+        if (!namaInput.value.trim()) setErr(namaInput, "Nama kelas wajib diisi!");
+        else setOk(namaInput);
+      });
+
+      ruanganInput.addEventListener("input", () => {
+        if (!ruanganInput.value.trim()) setErr(ruanganInput, "Ruang kelas wajib diisi!");
+        else setOk(ruanganInput);
+      });
+
+      waliInput.addEventListener("input", () => {
+        if (!waliInput.value.trim()) setErr(waliInput, "Nama wali kelas wajib diisi!");
+        else setOk(waliInput);
+      });
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const nama = namaInput.value.trim();
+        const tingkat = tingkatInput.value;
+        const jurusan = jurusanInput.value;
+        const ruangan = ruanganInput.value.trim();
+        const kapasitas = parseInt(kapasitasInput.value) || 36;
+        const jumlahSiswa = parseInt(jumlahSiswaInput.value) || 0;
+        const waliKelas = waliInput.value.trim();
+
+        if (!nama) {
+          setErr(namaInput, "Nama kelas wajib diisi!");
+          showToast("Nama kelas wajib diisi!", "danger");
+          return;
+        }
+
+        if (!ruangan) {
+          setErr(ruanganInput, "Ruangan wajib diisi!");
+          showToast("Ruang kelas wajib diisi!", "danger");
+          return;
+        }
+
+        if (!waliKelas) {
+          setErr(waliInput, "Nama wali kelas wajib diisi!");
+          showToast("Nama wali kelas wajib diisi!", "danger");
+          return;
+        }
+
+        const newClass = {
+          id: "KLS-" + Date.now().toString().slice(-4),
+          kode: nama.replace(/\s+/g, "-").toUpperCase(),
+          nama,
+          tingkat,
+          jurusan,
+          waliKelas,
+          kapasitas,
+          jumlahSiswa,
+          ruangan
+        };
+
+        const classes = getClassesData();
+        classes.unshift(newClass);
+        saveClassesData(classes);
+
+        showToast("Data Rombel Kelas baru berhasil disimpan!", "success");
+
+        setTimeout(() => {
+          window.location.href = "data-kelas.html";
+        }, 800);
+      });
+    });
+  </script>
+</body>
+</html>
