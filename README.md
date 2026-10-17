@@ -33,6 +33,8 @@ D:\siakad-admin/
 │   ├── layout.html            <-- Milestone 2: Master/Template dasar layout responsif
 │   ├── dashboard.html         <-- Milestone 3: Statistik ringkasan, 2 grafik Chart.js, agenda
 │   ├── data-master.html       <-- Milestone 3: Tabel data siswa, filter, search, modal aksi
+│   ├── data-guru.html         <-- Master Data Guru: Tabel guru, filter mapel/status, modal CRUD
+│   ├── data-kelas.html        <-- Master Data Kelas: Tabel rombel, filter tingkat/jurusan, modal CRUD
 │   ├── form.html              <-- Milestone 3: Formulir tambah siswa + validasi realtime
 │   └── laporan.html           <-- Milestone 3: Rapor rekapitulasi nilai + siap cetak (Print mode)
 ├── index.html                 <-- Halaman Login Portal SIAKAD

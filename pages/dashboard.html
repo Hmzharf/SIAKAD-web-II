@@ -55,13 +55,13 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link" onclick="showToast('Modul Data Guru akan hadir pada rilis berikutnya', 'warning'); return false;">
+          <a href="data-guru.html" class="nav-link">
             <i class="fa-solid fa-chalkboard-user"></i>
             <span>Data Guru</span>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link" onclick="showToast('Modul Data Kelas akan hadir pada rilis berikutnya', 'warning'); return false;">
+          <a href="data-kelas.html" class="nav-link">
             <i class="fa-solid fa-school"></i>
             <span>Data Kelas</span>
           </a>
@@ -171,10 +171,10 @@
             </div>
             <div class="stat-info">
               <div class="stat-label">Tenaga Pendidik (Guru)</div>
-              <div class="stat-value">48</div>
+              <div class="stat-value" id="statTotalTeachers">--</div>
               <div class="stat-trend trend-up">
                 <i class="fa-solid fa-circle-check"></i>
-                <span>100% Tersertifikasi</span>
+                <span>Tersertifikasi Pendidik</span>
               </div>
             </div>
           </div>
@@ -186,7 +186,7 @@
             </div>
             <div class="stat-info">
               <div class="stat-label">Rombel / Kelas Aktif</div>
-              <div class="stat-value">18</div>
+              <div class="stat-value" id="statTotalClasses">--</div>
               <div class="stat-trend">
                 <span style="color: var(--text-muted);">Tingkat X, XI, & XII</span>
               </div>
@@ -241,7 +241,7 @@
         </div>
 
         <!-- Quick Summary & Activity Section -->
-        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px;">
+        <div class="dashboard-bottom-grid">
           <!-- Left: Jadwal & Agenda Akademik -->
           <div class="glass-card">
             <div class="card-header-clean">

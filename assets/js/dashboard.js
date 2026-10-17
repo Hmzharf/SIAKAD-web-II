@@ -14,8 +14,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function updateDashboardStats() {
   const students = getStudentsData();
+  const teachers = getTeachersData();
+  const classes = getClassesData();
+
   const totalStudentsEl = document.getElementById("statTotalStudents");
   const activeStudentsEl = document.getElementById("statActiveStudents");
+  const totalTeachersEl = document.getElementById("statTotalTeachers");
+  const totalClassesEl = document.getElementById("statTotalClasses");
 
   if (totalStudentsEl) {
     totalStudentsEl.textContent = students.length;
@@ -23,7 +28,15 @@ function updateDashboardStats() {
 
   if (activeStudentsEl) {
     const activeCount = students.filter(s => s.status === "Aktif").length;
-    activeStudentsEl.textContent = `${activeCount} Siswa`;
+    activeStudentsEl.textContent = `${activeCount} Siswa Aktif`;
+  }
+
+  if (totalTeachersEl) {
+    totalTeachersEl.textContent = teachers.length;
+  }
+
+  if (totalClassesEl) {
+    totalClassesEl.textContent = classes.length;
   }
 }
 

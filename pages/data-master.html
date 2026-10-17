@@ -53,13 +53,13 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link" onclick="showToast('Modul Data Guru akan hadir pada rilis berikutnya', 'warning'); return false;">
+          <a href="data-guru.html" class="nav-link">
             <i class="fa-solid fa-chalkboard-user"></i>
             <span>Data Guru</span>
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link" onclick="showToast('Modul Data Kelas akan hadir pada rilis berikutnya', 'warning'); return false;">
+          <a href="data-kelas.html" class="nav-link">
             <i class="fa-solid fa-school"></i>
             <span>Data Kelas</span>
           </a>
@@ -140,7 +140,7 @@
 
         <!-- Glass Filter Bar -->
         <div class="glass-card" style="padding: 16px 20px; margin-bottom: 20px;">
-          <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+          <div class="filter-bar-responsive">
             <!-- Left: Search Box -->
             <div style="position: relative; flex: 1; min-width: 250px;">
               <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
@@ -172,6 +172,9 @@
 
         <!-- Main Data Table Card -->
         <div class="glass-card" style="padding: 0; overflow: hidden;">
+          <div class="mobile-scroll-hint">
+            <i class="fa-solid fa-arrows-left-right"></i> Geser ke samping untuk melihat data lengkap
+          </div>
           <div class="table-responsive" style="padding: 12px 20px;">
             <table class="glass-table">
               <thead>

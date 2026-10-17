@@ -87,8 +87,14 @@ SIAKAD Admin Panel memiliki navigasi berbasis **Collapsible Sidebar** dan **Top 
     │   ├── Tambah / Edit Siswa (/pages/form.html)
     │   │   ├── Form Input Lengkap Siswa
     │   │   └── Validasi Real-time JavaScript
-    │   ├── Data Guru (Mock Menu)
-    │   ├── Data Kelas & Rombel (Mock Menu)
+    │   ├── Data Guru (/pages/data-guru.html)
+    │   │   ├── Tabel Guru (NIP, Nama, Mapel, Status PNS/PPPK/Honorer)
+    │   │   ├── Pencarian & Filter Kepegawaian
+    │   │   └── Aksi: Modal Tambah, Edit, & Hapus
+    │   ├── Data Kelas & Rombel (/pages/data-kelas.html)
+    │   │   ├── Tabel Kelas (Tingkat, Jurusan, Wali Kelas, Kapasitas)
+    │   │   ├── Filter Tingkat & Jurusan
+    │   │   └── Aksi: Modal Tambah, Edit, & Hapus
     │   └── Data Mata Pelajaran (Mock Menu)
     │
     ├── 3. AKADEMIK & PENILAIAN

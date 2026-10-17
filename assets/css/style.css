@@ -1170,17 +1170,285 @@ textarea.form-control {
   display: none;
 }
 
-/* Responsive Breakpoints */
+/* ==========================================================================
+   MOBILE BACKDROP & DRAWER OVERLAY
+   ========================================================================== */
+.sidebar-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 98;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s ease;
+}
+
+.sidebar-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+body.sidebar-open-locked {
+  overflow: hidden !important;
+}
+
+.sidebar-mobile-close {
+  display: none;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin-left: auto;
+  transition: all var(--transition-speed);
+}
+
+.sidebar-mobile-close:hover {
+  background: var(--glass-bg-hover);
+  color: #fff;
+  border-color: var(--accent-danger);
+}
+
+.dashboard-bottom-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 24px;
+}
+
+.mobile-scroll-hint {
+  display: none;
+  font-size: 12px;
+  color: var(--accent-cyan);
+  padding: 8px 16px;
+  background: rgba(76, 201, 240, 0.08);
+  border-bottom: 1px solid rgba(76, 201, 240, 0.15);
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.filter-bar-responsive {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS (TABLET & MOBILE)
+   ========================================================================== */
 @media (max-width: 992px) {
   .sidebar {
     transform: translateX(-100%);
+    box-shadow: 15px 0 40px rgba(0, 0, 0, 0.8);
+    z-index: 100;
   }
 
   .sidebar.mobile-active {
     transform: translateX(0);
   }
 
+  .sidebar-mobile-close {
+    display: flex;
+  }
+
   .main-wrapper {
     margin-left: 0;
   }
+
+  .dashboard-charts-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .dashboard-bottom-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
+
+@media (max-width: 768px) {
+  .top-header {
+    height: 64px;
+    padding: 0 16px;
+  }
+
+  .header-search {
+    display: none;
+  }
+
+  .academic-badge {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+
+  .content-area {
+    padding: 16px 14px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .page-title h1 {
+    font-size: 20px;
+  }
+
+  .page-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .page-actions .btn {
+    width: 100%;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .stat-card {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
+  .stat-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+    border-radius: 10px;
+  }
+
+  .stat-info .stat-value {
+    font-size: 22px;
+  }
+
+  .stat-info .stat-label {
+    font-size: 10.5px;
+  }
+
+  .stat-info .stat-trend {
+    font-size: 10.5px;
+  }
+
+  .chart-container {
+    height: 240px;
+  }
+
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .glass-table {
+    min-width: 620px;
+  }
+
+  .mobile-scroll-hint {
+    display: flex;
+  }
+
+  .filter-bar-responsive {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .filter-bar-responsive > div {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+
+  .filter-bar-responsive select,
+  .filter-bar-responsive input {
+    width: 100% !important;
+  }
+
+  .modal-overlay {
+    padding: 12px;
+  }
+
+  .modal-card {
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-body {
+    padding: 16px;
+    overflow-y: auto;
+  }
+
+  .modal-header,
+  .modal-footer {
+    padding: 14px 16px;
+  }
+
+  .modal-footer {
+    flex-direction: column-reverse;
+  }
+
+  .modal-footer .btn {
+    width: 100%;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .main-footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 6px;
+    padding: 16px;
+    font-size: 11.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .academic-badge span {
+    display: none;
+  }
+
+  .academic-badge::after {
+    content: "2026/2027";
+  }
+
+  .card-header-clean {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .toast-container {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+  }
+}
+
